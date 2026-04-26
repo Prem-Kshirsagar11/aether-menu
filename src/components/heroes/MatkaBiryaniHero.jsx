@@ -173,7 +173,7 @@ const fadeUp = {
 export default function MatkaBiryaniHero() {
   const reduced = useReducedMotion()
 const [potsLoaded, setPotsLoaded] = useState(0)
-const allLoaded = potsLoaded >= 2
+const allLoaded = potsLoaded >= 4
   return (
     <section
       className="relative flex flex-col items-center justify-center min-h-screen px-6 overflow-hidden"
