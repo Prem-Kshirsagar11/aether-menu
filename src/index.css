@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-deep:       #0a0906;
+  --bg-card:       #111009;
+  --bg-card-hover: #18160f;
+  --gold:          #c9a84c;
+  --gold-light:    #e8c97a;
+  --gold-dim:      #7a6330;
+  --cream:         #f0e8d8;
+  --cream-muted:   #a89880;
+  --divider:       rgba(201, 168, 76, 0.18);
+  --font-display:  'Cormorant Garamond', serif;
+  --font-body:     'Jost', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Noise grain overlay for depth */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+/* Hide scrollbar on tab row but keep it scrollable */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Steam animations ───────────────────── */
+@keyframes steamRise {
+  0%   { transform: translateY(0)    translateX(0px)  scaleX(1);   opacity: 0;    }
+  12%  { opacity: 0.35; }
+  50%  { transform: translateY(-38px) translateX(5px)  scaleX(1.3); opacity: 0.18; }
+  100% { transform: translateY(-75px) translateX(-3px) scaleX(0.7); opacity: 0;    }
+}
+@keyframes steamRise2 {
+  0%   { transform: translateY(0)    translateX(0px);  opacity: 0;    }
+  18%  { opacity: 0.3; }
+  100% { transform: translateY(-55px) translateX(-6px); opacity: 0;    }
+}
+@keyframes steamRise3 {
+  0%   { transform: translateY(0)    translateX(0px)  scaleX(1);   opacity: 0;    }
+  20%  { opacity: 0.22; }
+  100% { transform: translateY(-65px) translateX(4px)  scaleX(1.2); opacity: 0;    }
+}
+.steam-wisp {
+  position: absolute;
+  width: 19px;
+  border-radius: 40%;
+  filter: blur(4px);
+  background: linear-gradient(to top, rgba(220,210,200,0.5), transparent);
+  pointer-events: none;
+}
+.steam-a { height: 44px; animation: steamRise  3.8s ease-out infinite; }
+.steam-b { height: 36px; animation: steamRise2 4.4s ease-out infinite 1.2s; left: 8px !important; }
+.steam-c { height: 52px; animation: steamRise3 5.1s ease-out infinite 2.4s; left: -6px !important; }
