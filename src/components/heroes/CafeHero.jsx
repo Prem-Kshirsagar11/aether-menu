@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ACTIVE_VENUE, venues } from '../../config/venue'
 
@@ -106,18 +107,19 @@ function FloatingItem({ item, reduced }) {
       }
     >
       <img
-        src={item.src}
-        alt=""
-        loading="lazy"
-        style={{
-          width: '100%',
-          height: 'auto',
-          objectFit: 'contain',
-          transform: `rotate(${item.tilt ?? 0}deg)`,
-          filter: `blur(${item.blur}px) drop-shadow(0 10px 28px rgba(0,0,0,0.6))`,
-          willChange: reduced ? 'auto' : 'transform',
-        }}
-      />
+  src={item.src}
+  alt=""
+  loading="eager"
+  onLoad={item.id === 1 ? item.onLoad : undefined}
+  style={{
+    width: '100%',
+    height: 'auto',
+    objectFit: 'contain',
+    transform: `rotate(${item.tilt ?? 0}deg)`,
+    filter: `blur(${item.blur}px) drop-shadow(0 10px 28px rgba(0,0,0,0.6))`,
+    willChange: reduced ? 'auto' : 'transform',
+  }}
+/>
     </motion.div>
   )
 }
@@ -130,7 +132,7 @@ const fadeUp = {
 export default function CafeHero() {
   const reduced = useReducedMotion()
   const venue = venues[ACTIVE_VENUE]
-
+const [coffeeLoaded, setCoffeeLoaded] = useState(false)
   return (
     <section
       className="relative flex flex-col items-center justify-center min-h-screen px-6 overflow-hidden"
@@ -145,8 +147,8 @@ export default function CafeHero() {
           zIndex: 1,
         }}
       />
-{/* Steam over coffee cup */}
-<div
+
+{coffeeLoaded && <div
   style={{
     position: 'absolute',
     zIndex: 3,
@@ -156,10 +158,14 @@ export default function CafeHero() {
   }}
 >
   <Steam />
-</div>
+</div>}
       {items.map(item => (
-        <FloatingItem key={item.id} item={item} reduced={reduced} />
-      ))}
+  <FloatingItem
+    key={item.id}
+    item={{ ...item, onLoad: item.id === 1 ? () => setCoffeeLoaded(true) : undefined }}
+    reduced={reduced}
+  />
+))}
 
       <div className="relative flex flex-col items-center z-10 text-center">
 

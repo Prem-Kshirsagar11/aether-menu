@@ -107,7 +107,7 @@ function FloatingDish({ dish, reduced }) {
       <img
         src={dish.src}
         alt=""
-        loading="lazy"
+        loading="eager"
         style={{
           width: '100%',
           height: 'auto',

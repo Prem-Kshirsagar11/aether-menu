@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 
 function scrollToMenu() {
@@ -91,7 +92,7 @@ const pots = [
   },
 ]
 
-function FloatingPot({ pot, reduced }) {
+function FloatingPot({ pot, reduced, allLoaded }) {
   return (
     <>
       {/* Steam above pot */}
@@ -103,7 +104,7 @@ function FloatingPot({ pot, reduced }) {
           ...pot.steamOffset,
         }}
       >
-        {!reduced && <Steam />}
+       {!reduced && allLoaded && <Steam />}
       </div>
 
       {/* Pot image — no circular crop, transparent PNG floats freely */}
@@ -148,7 +149,8 @@ function FloatingPot({ pot, reduced }) {
         <img
   src={pot.src}
   alt=""
-  loading="lazy"
+  loading="eager"
+  onLoad={pot.onLoad}
   style={{
     width: '100%',
     height: 'auto',
@@ -170,7 +172,8 @@ const fadeUp = {
 
 export default function MatkaBiryaniHero() {
   const reduced = useReducedMotion()
-
+const [potsLoaded, setPotsLoaded] = useState(0)
+const allLoaded = potsLoaded >= 2
   return (
     <section
       className="relative flex flex-col items-center justify-center min-h-screen px-6 overflow-hidden"
@@ -189,8 +192,13 @@ export default function MatkaBiryaniHero() {
 
       {/* Floating pots */}
       {pots.map(pot => (
-        <FloatingPot key={pot.id} pot={pot} reduced={reduced} />
-      ))}
+  <FloatingPot
+    key={pot.id}
+    pot={{ ...pot, onLoad: () => setPotsLoaded(v => v + 1) }}
+    reduced={reduced}
+    allLoaded={allLoaded}
+  />
+))}
 
       {/* Main content */}
       <div className="relative flex flex-col items-center z-10 text-center">
