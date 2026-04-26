@@ -22,7 +22,7 @@ function Steam() {
 const pots = [
   {
     id: 1,
-    src: '/matka-1.png',
+    src: '/matka-1.webp',
     style: { top: '2%', left: '6%' },
     size: 'clamp(150px, 22vw, 160px)',
     delay: 0,
@@ -36,7 +36,7 @@ const pots = [
   },
   {
     id: 2,
-    src: '/matka-2.png',
+    src: '/matka-2.webp',
     style: { top: '4%', right: '15%' },
     size: 'clamp(90px, 22vw, 160px)',
     delay: 1.3,
@@ -51,7 +51,7 @@ const pots = [
   },
   {
     id: 3,
-    src: '/matka-3.png',
+    src: '/matka-3.webp',
     style: { top: '36%', left: '0%' },
     size: 'clamp(80px, 18vw, 140px)',
     delay: 0.6,
@@ -66,7 +66,7 @@ const pots = [
   },
   {
     id: 4,
-    src: '/matka-4.png',
+    src: '/matka-4.webp',
     style: { top: '40%', right: '0%' },
     size: 'clamp(100px, 18vw, 140px)',
     delay: 2.1,
@@ -79,7 +79,7 @@ const pots = [
   },
   {
     id: 5,
-    src: '/matka-5.png',
+    src: '/matka-5.webp',
     style: { bottom: '5%', left: '20%', transform: 'translateX(-50%)' },
     size: 'clamp(200px, 60vw, 230px)',
     delay: 0.9,
