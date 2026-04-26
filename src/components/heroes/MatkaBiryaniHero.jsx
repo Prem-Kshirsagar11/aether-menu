@@ -149,7 +149,7 @@ function FloatingPot({ pot, reduced, allLoaded }) {
         <img
   src={pot.src}
   alt=""
-  loading="eager"
+  loading="lazy"
   onLoad={pot.onLoad}
   style={{
     width: '100%',

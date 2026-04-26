@@ -109,7 +109,7 @@ function FloatingItem({ item, reduced }) {
       <img
   src={item.src}
   alt=""
-  loading="eager"
+  loading="lazy"
   onLoad={item.id === 1 ? item.onLoad : undefined}
   style={{
     width: '100%',
