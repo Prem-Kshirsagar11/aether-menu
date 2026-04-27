@@ -9,59 +9,18 @@ function scrollToMenu() {
   }
 }
 
-const dishes = [
-  {
-    id: 1,
-    src: '/hotel-1.png',
-    style: { top: '10%', left: '-4%' },
-    size: 'clamp(180px, 62vw, 290px)',
-    delay: 0,
-    duration: 6.2,
-    yRange: 10,
-    rotate: [-2, 1.5],
-    opacity: 0.72,
-    blur: 0.8,
-    tilt: 12,
-  },
-  {
-    id: 2,
-    src: '/hotel-2.png',
-    style: { top: '65%', right: '-4%' },
-    size: 'clamp(160px, 52vw, 240px)',
-    delay: 1.4,
-    duration: 6.8,
-    yRange: 9,
-    rotate: [1, -2],
-    opacity: 0.55,
-    blur: 0.8,
-    tilt: -14,
-  },
-  {
-    id: 3,
-    src: '/hotel-3.png',
-    style: { top: '40%', left: '0%' },
-    size: 'clamp(110px, 34vw, 160px)',
-    delay: 0.7,
-    duration: 7.2,
-    yRange: 11,
-    rotate: [-1.5, 2],
-    opacity: 0.6,
-    blur: 0.7,
-    tilt: 18,
-  },
-  {
-    id: 4,
-    src: '/hotel-4.png',
-    style: { top: '42%', right: '-4%' },
-    size: 'clamp(110px, 34vw, 160px)',
-    delay: 2.0,
-    duration: 6.5,
-    yRange: 9,
-    rotate: [2, -1],
-    opacity: 0.55,
-    blur: 0.9,
-    tilt: -10,
-  },
+const hotelDishes = [
+  { id: 1, src: '/hotel-1.png', style: { top: '10%', left: '-4%' }, size: 'clamp(180px, 62vw, 290px)', delay: 0, duration: 6.2, yRange: 10, rotate: [-2, 1.5], opacity: 0.72, blur: 0.8, tilt: 12 },
+  { id: 2, src: '/hotel-2.png', style: { top: '65%', right: '-4%' }, size: 'clamp(160px, 52vw, 240px)', delay: 1.4, duration: 6.8, yRange: 9, rotate: [1, -2], opacity: 0.55, blur: 0.8, tilt: -14 },
+  { id: 3, src: '/hotel-3.png', style: { top: '40%', left: '0%' }, size: 'clamp(110px, 34vw, 160px)', delay: 0.7, duration: 7.2, yRange: 11, rotate: [-1.5, 2], opacity: 0.6, blur: 0.7, tilt: 18 },
+  { id: 4, src: '/hotel-4.png', style: { top: '42%', right: '-4%' }, size: 'clamp(110px, 34vw, 160px)', delay: 2.0, duration: 6.5, yRange: 9, rotate: [2, -1], opacity: 0.55, blur: 0.9, tilt: -10 },
+]
+
+const dosaDishes = [
+  { id: 1, src: '/dosa-1.png', style: { top: '10%', left: '-4%' }, size: 'clamp(180px, 62vw, 290px)', delay: 0, duration: 6.2, yRange: 10, rotate: [-2, 1.5], opacity: 0.72, blur: 0.8, tilt: 12 },
+  { id: 2, src: '/dosa-2.png', style: { top: '65%', right: '-4%' }, size: 'clamp(160px, 52vw, 240px)', delay: 1.4, duration: 6.8, yRange: 9, rotate: [1, -2], opacity: 0.55, blur: 0.8, tilt: -14 },
+  { id: 3, src: '/dosa-1.png', style: { top: '40%', left: '0%' }, size: 'clamp(110px, 34vw, 160px)', delay: 0.7, duration: 7.2, yRange: 11, rotate: [-1.5, 2], opacity: 0.6, blur: 0.7, tilt: 18 },
+  { id: 4, src: '/dosa-2.png', style: { top: '42%', right: '-4%' }, size: 'clamp(110px, 34vw, 160px)', delay: 2.0, duration: 6.5, yRange: 9, rotate: [2, -1], opacity: 0.55, blur: 0.9, tilt: -10 },
 ]
 
 function FloatingDish({ dish, reduced }) {
@@ -127,6 +86,7 @@ const fadeUp = {
 }
 
 export default function HotelHero() {
+  const dishes = ACTIVE_VENUE === 'dosacafe' ? dosaDishes : hotelDishes
   const reduced = useReducedMotion()
   const venue = venues[ACTIVE_VENUE]
 
