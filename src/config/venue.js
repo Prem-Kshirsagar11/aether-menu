@@ -135,5 +135,35 @@ export const venues = {
     tagline: 'slow coffee, good light',
     pageTitle: 'Café — A Quiet Corner',
   },
-
+dosacafe: {
+    colors: {
+      '--gold':       '#c9a84c',
+      '--gold-light': '#e8c97a',
+      '--gold-dim':   '#7a6330',
+      '--divider':    'rgba(201,168,76,0.18)',
+    },
+    titleLines: [
+      {
+        text: 'डोसा',
+        font: "'Rozha One', serif",
+        weight: 400,
+        italic: false,
+        size: 'clamp(3rem, 11vw, 9rem)',
+        color: 'var(--cream)',
+        spacing: '0.04em',
+      },
+      {
+        text: 'Cafe',
+        font: "'Cormorant Garamond', serif",
+        weight: 300,
+        italic: false,
+        size: 'clamp(1.6rem, 5vw, 4rem)',
+        color: 'var(--gold)',
+        spacing: '0.18em',
+      },
+    ],
+    eyebrow: 'Est. 2024 · Pure Vegetarian',
+    tagline: 'crisp, golden, always fresh',
+    pageTitle: 'Dosa Cafe',
+  },
 }

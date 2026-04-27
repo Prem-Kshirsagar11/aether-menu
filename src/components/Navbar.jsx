@@ -14,6 +14,7 @@ const venueOptions = [
   { key: 'mauli',        label: 'Hotel Mauli' },
   { key: 'matkabiryani', label: 'Matka Biryani' },
   { key: 'cafe',         label: 'Café' },
+  { key: 'dosacafe',     label: 'Dosa Cafe' },
 ]
 
 function switchVenue(key) {
